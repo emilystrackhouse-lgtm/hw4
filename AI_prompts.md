@@ -733,3 +733,43 @@ This file is the running record of AI-assisted work completed during the Homewor
   - The earlier problem sections, updated.
   - Five new reference sections: every model in `models.py` with its fields and why they were chosen; the agent's 6 tools and capabilities; the safety rules (prompt and code); technical settings (model, loop limits, result caps, history and message limits, rate limits, passwords, sessions, ports, and measured speed); and the audit trail format, with a real example.
 - Updated `backend/README.md`.
+
+## Problem 13 — Push to GitHub and Submit the URL
+
+### Original prompt — Organize as hw4 and push to a public repo
+
+> Problem 13: Push to GitHub and Submit the URL
+>
+> Organize the project in a folder named `hw4` and push it to a public GitHub repository. Share the repository URL with me so graders can access and clone our code. Make it so I can copy and paste it.
+>
+> Use `.gitignore` to exclude the actual `.env` file, `campus_customs.db`, and product images. Include an `.env.example` containing placeholder values only.
+> Follow this project structure:
+>
+> * `hw4/`: Include `AI_prompts.md`, `requirements.txt`, `.env.example`, `.gitignore`, and `README.md`.
+> * `hw4/frontend/`: Store the Vite React TypeScript application.
+> * `hw4/backend/`: Include `main.py` for the FastAPI application, along with `agent.py`, `models.py`, `tools.py`, and `prompts/prompt.md`.
+> * `hw4/output/`: Include `harness.md`, `design.md`, `usability.md`, `app_check.html`, `audit_trail.json`, and the `app_check_images/` folder containing the screenshots referenced by the HTML report.
+>
+> Keep the data pack local and out of Git: `data/campus_customs.db` contains the database, and `data/products/` contains the catalog's product images.
+> The agent itself should consist of four files within `backend/`: `prompts/prompt.md`, `agent.py`, `tools.py`, and `models.py`.
+> In `README.md`, explain where to place the local data pack and how to start both the front end and back end.
+
+### Work completed
+
+- **Renamed the project folder** from `Homework/Homework 4` to `Homework/hw4`.
+  - Moved `requirements.txt` and the real `.env` up to the `hw4/` root.
+  - The backend now reads `hw4/.env`.
+  - Rebuilt the backend virtual environment, kept out of iCloud sync, because the old one had the old path built in.
+  - Updated the app's launch settings for the new path.
+- **Root files:**
+  - `.gitignore` excludes `.env`, the `data/` pack (the database, `products/`, and `products_web/`), `.venv`, `node_modules`, `dist`, and caches.
+  - `.env.example` has placeholder values only.
+  - `README.md` covers the project structure, where to put the data pack, settings, starting the backend and front end, and tests.
+  - `data/README.md` explains the data pack.
+  - Updated the harness and backend README for the new layout.
+- **Compatibility fix:** rebuilding the environment installed PydanticAI 2.60, which reports fact-check retries differently. Updated the audit trail to handle both forms, and pinned `pydantic-ai-slim[openai]>=2.57`. All 45 tests pass, and the real database and audit log were unchanged.
+- **Before pushing:**
+  - Scanned every staged file for keys, tokens, personal email, and home-folder paths. None found, and the real Portkey key appears in no committed file.
+  - Confirmed the ignored files were excluded. The only images committed are the 3 report screenshots.
+- **Pushed to a new public repository:** https://github.com/emilystrackhouse-lgtm/hw4 (branch `main`).
+- **Verified a fresh clone:** every required file is present. `.env`, the database, product images, `.venv`, and `node_modules` are absent. The backend Python compiles, and `audit_trail.json` has its 7 entries.
