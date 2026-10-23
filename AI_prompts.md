@@ -773,3 +773,20 @@ This file is the running record of AI-assisted work completed during the Homewor
   - Confirmed the ignored files were excluded. The only images committed are the 3 report screenshots.
 - **Pushed to a new public repository:** https://github.com/emilystrackhouse-lgtm/hw4 (branch `main`).
 - **Verified a fresh clone:** every required file is present. `.env`, the database, product images, `.venv`, and `node_modules` are absent. The backend Python compiles, and `audit_trail.json` has its 7 entries.
+
+### Follow-up prompt — Share the link and confirm the design
+
+> please share the public link with me. also double check that the website has the updated avatar vibe we upgraded to
+
+**What this added beyond the original prompt:** a request for the shareable link, and a check that the Problem 10 "Elm City After Dark" design is what's live and what's in the repository.
+
+### Work completed
+
+- Shared the public repository link: https://github.com/emilystrackhouse-lgtm/hw4 (confirmed `PUBLIC`).
+- **Confirmed on GitHub:** the theme files are there. `frontend/src/theme.css`, `components/Spores.tsx`, and `components/Skyline.tsx` are in the repository, `main.tsx` loads `theme.css`, and the Home page includes the Skyline and the "the shop's still lit" hero.
+- **Confirmed in the running site** (fresh screenshots of Home and Products):
+  - the night-sky background with drifting lights
+  - the gradient serif hero line, the glowing floating seal, and the gothic skyline with lit windows
+  - glowing product cards, prices, and the "Few sizes left" badge
+  - the glowing "Ask us" button
+- The local copy matches GitHub, with nothing left uncommitted.
