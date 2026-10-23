@@ -1,0 +1,982 @@
+/*
+ * "Elm City After Dark": the Problem 10 theme.
+ *
+ * Yale after nightfall, imagined like a bioluminescent world: the old elms and gothic
+ * towers glow Yale blue, spores of light drift through the air, and every product sits
+ * in its own glowing display case. Loaded after index.css and overrides its light theme.
+ */
+
+:root {
+  --night-950: #040a17;
+  --night-900: #071328;
+  --night-850: #0a1a36;
+  --night-800: #0e2347;
+  --yale: #00356b;
+  --glow: #6fd3ff; /* bioluminescent Yale blue */
+  --glow-strong: #a8e6ff;
+  --aqua: #5eead4;
+  --aurora: #9d8cff;
+  --text: #e8f1ff;
+  --text-muted: #a9bdd8;
+  --rule: rgb(111 211 255 / 0.16);
+  --glass: rgb(10 26 54 / 0.72);
+  --glass-strong: rgb(10 26 54 / 0.9);
+  --halo: 0 0 0 1px rgb(111 211 255 / 0.22), 0 0 24px rgb(111 211 255 / 0.18);
+  --halo-strong: 0 0 0 1px rgb(111 211 255 / 0.5), 0 0 32px rgb(111 211 255 / 0.35), 0 0 80px rgb(157 140 255 / 0.18);
+  --font-accent: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --focus-ring: 0 0 0 2px var(--night-950), 0 0 0 5px var(--glow);
+  color-scheme: dark;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgb(0 53 107 / 0.55), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgb(157 140 255 / 0.12), transparent 60%),
+    var(--night-950);
+  color: var(--text);
+}
+
+::selection {
+  background: rgb(111 211 255 / 0.35);
+  color: #fff;
+}
+
+.spores {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+#root > *:not(.spores, .chat, .skip-link) {
+  position: relative;
+  z-index: 1;
+}
+
+h1,
+h2,
+h3 {
+  color: #fff;
+}
+
+a {
+  color: var(--glow);
+}
+
+.eyebrow {
+  color: var(--glow);
+  text-shadow: 0 0 18px rgb(111 211 255 / 0.5);
+}
+
+.eyebrow--light {
+  color: var(--glow-strong);
+}
+
+.pill {
+  background: rgb(111 211 255 / 0.12);
+  color: var(--glow-strong);
+  box-shadow: inset 0 0 0 1px rgb(111 211 255 / 0.3);
+}
+
+/* Buttons: lit from within */
+.button--primary,
+.button--light {
+  background: linear-gradient(135deg, var(--glow) 0%, #3aa0ff 55%, var(--aurora) 120%);
+  color: var(--night-950);
+  box-shadow: 0 0 24px rgb(111 211 255 / 0.35);
+}
+
+.button--primary:hover,
+.button--light:hover {
+  background: linear-gradient(135deg, var(--glow-strong) 0%, var(--glow) 55%, var(--aurora) 120%);
+  box-shadow: 0 0 36px rgb(111 211 255 / 0.55);
+}
+
+.button--outline,
+.button--ghost-light {
+  border-color: rgb(111 211 255 / 0.6);
+  background: rgb(111 211 255 / 0.06);
+  color: var(--glow-strong);
+}
+
+.button--outline:hover,
+.button--ghost-light:hover {
+  background: rgb(111 211 255 / 0.16);
+  box-shadow: 0 0 24px rgb(111 211 255 / 0.3);
+}
+
+/* Announcement and header */
+.announcement {
+  background: linear-gradient(90deg, var(--yale), #0b4a8f 50%, var(--yale));
+  color: #fff;
+}
+
+.announcement__divider {
+  color: var(--glow);
+}
+
+.site-header {
+  background: rgb(4 10 23 / 0.72);
+  border-bottom: 1px solid var(--rule);
+  backdrop-filter: blur(14px) saturate(1.4);
+}
+
+.logo__name {
+  color: #fff;
+  text-shadow:
+    2px 2px 0 var(--yale),
+    0 0 18px rgb(111 211 255 / 0.55);
+}
+
+.logo__est {
+  color: var(--glow-strong);
+}
+
+.logo__est::before,
+.logo__est::after {
+  background: var(--glow);
+  box-shadow: 0 0 8px var(--glow);
+}
+
+.site-nav__link {
+  color: var(--text);
+}
+
+.site-nav__link::after,
+.site-nav__link.active::after {
+  background: var(--glow);
+  box-shadow: 0 0 12px var(--glow);
+}
+
+.nav-toggle {
+  border-color: var(--glow);
+  background: transparent;
+  color: var(--glow-strong);
+}
+
+@media (max-width: 900px) {
+  .site-nav {
+    background: var(--glass-strong);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(16px);
+  }
+
+  .site-nav__account {
+    border-top-color: var(--rule);
+  }
+}
+
+/* Hero: the campus at night */
+.hero {
+  min-height: min(88vh, 760px);
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(600px circle at var(--lantern-x, 70%) var(--lantern-y, 30%), rgb(111 211 255 / 0.14), transparent 60%),
+    radial-gradient(ellipse 70% 55% at 75% 35%, rgb(0 53 107 / 0.85), transparent 70%),
+    linear-gradient(180deg, rgb(4 10 23 / 0.2) 0%, rgb(7 19 40 / 0.55) 100%);
+  isolation: isolate;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-bottom: clamp(7rem, 16vw, 11rem);
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 6.6vw, 5.4rem);
+  line-height: 0.98;
+  text-shadow: 0 0 40px rgb(111 211 255 / 0.35);
+}
+
+.hero__line {
+  display: inline-block;
+  animation: rise-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero__line + .hero__line {
+  animation-delay: 0.12s;
+}
+
+.hero__accent {
+  display: block;
+  margin-top: 0.15em;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  background: linear-gradient(90deg, var(--glow-strong), var(--glow) 40%, var(--aurora) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 0 22px rgb(111 211 255 / 0.45));
+  animation: rise-in 0.9s 0.24s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero__lede {
+  color: var(--text-muted);
+  animation: rise-in 0.9s 0.36s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero__actions {
+  animation: rise-in 0.9s 0.48s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.skyline {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 1;
+  width: 100%;
+  height: clamp(180px, 30vw, 360px);
+  pointer-events: none;
+}
+
+.skyline__elms ellipse {
+  fill: rgb(14 35 71 / 0.85);
+  filter: drop-shadow(0 -6px 30px rgb(94 234 212 / 0.12));
+}
+
+.skyline__edge {
+  stroke-width: 2;
+}
+
+.skyline__windows rect {
+  fill: var(--glow-strong);
+  animation: window-flicker 6s ease-in-out infinite;
+}
+
+/* The seal floats in a slowly turning ring of light */
+.hero__badge {
+  position: relative;
+}
+
+.hero__badge::before {
+  content: '';
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: min(108%, 380px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent, rgb(111 211 255 / 0.65), transparent 30%, rgb(157 140 255 / 0.5), transparent 60%, rgb(94 234 212 / 0.45), transparent);
+  filter: blur(18px);
+  animation: spin 18s linear infinite;
+}
+
+.hero__badge .seal {
+  position: relative;
+  filter: drop-shadow(0 0 22px rgb(111 211 255 / 0.5));
+  animation: float 7s ease-in-out infinite;
+}
+
+.seal__outer,
+.seal__inner {
+  stroke: var(--glow);
+}
+
+.seal__inner {
+  fill: rgb(4 10 23 / 0.6);
+}
+
+.seal--navy .seal__outer,
+.seal--navy .seal__inner {
+  stroke: var(--glow);
+}
+
+.seal--navy .seal__inner {
+  fill: rgb(4 10 23 / 0.7);
+}
+
+.seal--navy .seal__ring-text,
+.seal--navy .seal__year {
+  fill: #fff;
+}
+
+.seal--navy .seal__est {
+  fill: var(--glow-strong);
+}
+
+.seal--navy {
+  filter: drop-shadow(0 0 26px rgb(111 211 255 / 0.4));
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Stats, sections, tiles */
+.stats {
+  background: rgb(7 19 40 / 0.75);
+  border-block: 1px solid var(--rule);
+  backdrop-filter: blur(8px);
+}
+
+.stats__list li {
+  border-left-color: var(--glow);
+}
+
+.stats__list strong {
+  color: #fff;
+  text-shadow: 0 0 20px rgb(111 211 255 / 0.55);
+}
+
+.stats__list span,
+.section__header p:last-child,
+.split__copy p,
+.tile p,
+.value-card p,
+.service-list p,
+.notice p,
+.auth__intro,
+.auth__switch,
+.result-count,
+.product__stock-summary,
+.breadcrumb ol,
+.product-card__description,
+.field__hint {
+  color: var(--text-muted);
+}
+
+.section--tinted {
+  background: linear-gradient(180deg, rgb(10 26 54 / 0.55), rgb(4 10 23 / 0.35));
+}
+
+.tile,
+.value-card,
+.service-list li,
+.notice,
+.auth__card {
+  border: 1px solid var(--rule);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--halo);
+}
+
+.tile {
+  border-top: 3px solid var(--glow);
+}
+
+a.tile:hover {
+  border-top-color: var(--glow-strong);
+  box-shadow: var(--halo-strong);
+}
+
+.tile__cta {
+  color: var(--glow);
+}
+
+.tile--navy {
+  background: linear-gradient(150deg, var(--yale), #0b4a8f 60%, rgb(157 140 255 / 0.55));
+  border-color: transparent;
+}
+
+.service-list li {
+  border-left: 3px solid var(--glow);
+}
+
+.value-card__number {
+  color: var(--glow);
+  text-shadow: 0 0 18px rgb(111 211 255 / 0.6);
+}
+
+.cta-band,
+.page-hero {
+  background:
+    radial-gradient(ellipse 60% 120% at 85% 50%, rgb(157 140 255 / 0.22), transparent 70%),
+    radial-gradient(ellipse 70% 120% at 10% 0%, rgb(111 211 255 / 0.18), transparent 70%),
+    rgb(0 53 107 / 0.55);
+  border-block: 1px solid var(--rule);
+}
+
+.page-hero h1 {
+  text-shadow: 0 0 36px rgb(111 211 255 / 0.4);
+}
+
+/* Filters and toolbar */
+.chip {
+  border-color: var(--rule);
+  background: rgb(10 26 54 / 0.65);
+  color: var(--text);
+}
+
+.chip:hover {
+  border-color: var(--glow);
+}
+
+.chip[aria-pressed='true'] {
+  border-color: var(--glow);
+  background: rgb(111 211 255 / 0.18);
+  color: #fff;
+  box-shadow: 0 0 18px rgb(111 211 255 / 0.3);
+}
+
+.chip__count {
+  background: rgb(111 211 255 / 0.15);
+  color: var(--glow-strong);
+}
+
+.toolbar,
+.search-banner {
+  border: 1px solid var(--rule);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+}
+
+.search-banner {
+  border-left: 3px solid var(--glow);
+  box-shadow: var(--halo);
+}
+
+.search-banner p,
+.search-banner strong {
+  color: var(--text);
+}
+
+.search-banner__label {
+  color: var(--glow);
+}
+
+.toolbar__field label,
+.field label,
+.product__label,
+.account-details dt {
+  color: var(--glow-strong);
+}
+
+.field input,
+.toolbar__field input,
+.toolbar__field select,
+.chat__form input {
+  border-color: rgb(111 211 255 / 0.3);
+  background: rgb(4 10 23 / 0.6);
+  color: var(--text);
+}
+
+.field input:hover,
+.toolbar__field input:hover,
+.toolbar__field select:hover {
+  border-color: var(--glow);
+}
+
+.field input::placeholder,
+.toolbar__field input::placeholder,
+.chat__form input::placeholder {
+  color: #7f95b3;
+}
+
+/* Product cards: glowing display cases */
+.product-grid {
+  perspective: 1200px;
+}
+
+.product-card {
+  --glow-x: 50%;
+  --glow-y: 0%;
+  position: relative;
+  border: 1px solid var(--rule);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.product-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(380px circle at var(--glow-x) var(--glow-y), rgb(111 211 255 / 0.18), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+a.product-card:hover {
+  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-6px);
+  border-color: rgb(111 211 255 / 0.55);
+  box-shadow: var(--halo-strong);
+}
+
+a.product-card:hover::after {
+  opacity: 1;
+}
+
+.product-card__media {
+  position: relative;
+  border-bottom: 1px solid var(--rule);
+  background: radial-gradient(circle at 50% 40%, #ffffff 55%, #e3eefb 100%);
+  overflow: hidden;
+}
+
+/* A sweep of light crosses the photo on hover */
+.product-card__media::before {
+  content: '';
+  position: absolute;
+  inset: -40% auto -40% -60%;
+  z-index: 1;
+  width: 40%;
+  rotate: 18deg;
+  background: linear-gradient(90deg, transparent, rgb(111 211 255 / 0.35), transparent);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+
+a.product-card:hover .product-card__media::before {
+  left: 130%;
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 2;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--night-950);
+  color: var(--glow-strong);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 0 14px rgb(111 211 255 / 0.5);
+}
+
+.product-card__name {
+  color: #fff;
+}
+
+.product-card__price,
+.product__price,
+.strip-card__price {
+  color: var(--glow);
+  text-shadow: 0 0 16px rgb(111 211 255 / 0.55);
+}
+
+.color-summary {
+  color: var(--text);
+}
+
+.swatch {
+  border-color: var(--night-900);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.35);
+}
+
+.product-card--skeleton .product-card__media,
+.skeleton-line,
+.skeleton-block {
+  background: rgb(111 211 255 / 0.1);
+}
+
+/* Product page: the item on a lit pedestal */
+.breadcrumb a {
+  color: var(--glow);
+}
+
+.product__media {
+  border: 1px solid rgb(111 211 255 / 0.35);
+  background: radial-gradient(circle at 50% 42%, #ffffff 58%, #dcebfb 100%);
+  box-shadow:
+    0 0 0 1px rgb(111 211 255 / 0.25),
+    0 30px 80px -20px rgb(111 211 255 / 0.45),
+    0 0 120px rgb(157 140 255 / 0.15);
+}
+
+.product__media img {
+  animation: float 9s ease-in-out infinite;
+}
+
+.product__title {
+  text-shadow: 0 0 30px rgb(111 211 255 / 0.3);
+}
+
+.product__description {
+  color: var(--text);
+}
+
+.product__section {
+  border-top-color: var(--rule);
+}
+
+.size {
+  border-color: rgb(111 211 255 / 0.55);
+  background: rgb(111 211 255 / 0.06);
+}
+
+.size__name {
+  color: #fff;
+}
+
+.size__status {
+  color: var(--text-muted);
+}
+
+.size--low {
+  border-color: var(--aqua);
+  background: rgb(94 234 212 / 0.1);
+  box-shadow: 0 0 14px rgb(94 234 212 / 0.25);
+}
+
+.size--low .size__status {
+  color: var(--aqua);
+}
+
+.size--out {
+  border-color: rgb(169 189 216 / 0.25);
+  background: transparent;
+}
+
+.size--out .size__name {
+  color: #6f84a3;
+}
+
+.tag-list li {
+  background: rgb(111 211 255 / 0.1);
+  color: var(--glow-strong);
+}
+
+.product-strip {
+  border-top-color: var(--rule);
+}
+
+.strip-card {
+  border-color: var(--rule);
+  background: var(--glass);
+}
+
+.strip-card img {
+  border-radius: 8px;
+  background: #fff;
+}
+
+.strip-card__name {
+  color: #fff;
+}
+
+.strip-card:hover {
+  border-color: rgb(111 211 255 / 0.55);
+  box-shadow: var(--halo-strong);
+}
+
+/* Forms and account */
+.auth {
+  background: transparent;
+}
+
+.auth__card {
+  border-top: 3px solid var(--glow);
+}
+
+.form-alert {
+  background: rgb(255 107 107 / 0.1);
+  color: #ffb4b4;
+  border-left-color: #ff6b6b;
+}
+
+.field__error {
+  color: #ffb4b4;
+}
+
+.field--error input {
+  border-color: #ff8a8a;
+}
+
+.field__reveal {
+  color: var(--glow);
+}
+
+.field__reveal:hover {
+  background: rgb(111 211 255 / 0.12);
+}
+
+.account-details,
+.account-details div {
+  border-color: var(--rule);
+}
+
+.notice--error {
+  border-color: #ff8a8a;
+  background: rgb(255 107 107 / 0.08);
+}
+
+/* Footer */
+.site-footer {
+  background: linear-gradient(180deg, rgb(4 10 23 / 0.6), var(--night-950));
+  border-top: 1px solid var(--rule);
+  box-shadow: 0 -1px 30px rgb(111 211 255 / 0.12);
+  color: var(--text-muted);
+}
+
+.site-footer h2 {
+  color: var(--glow);
+}
+
+.site-footer__bottom {
+  border-top-color: var(--rule);
+}
+
+/* Chat: a guide made of light */
+.chat__launcher {
+  border: 1px solid rgb(168 230 255 / 0.7);
+  background: radial-gradient(circle at 30% 30%, var(--glow-strong), var(--glow) 35%, #2f7fd6 70%, var(--aurora));
+  color: var(--night-950);
+  box-shadow:
+    0 0 24px rgb(111 211 255 / 0.6),
+    0 0 60px rgb(157 140 255 / 0.35);
+  animation: breathe 3.6s ease-in-out infinite;
+}
+
+.chat__launcher:hover {
+  background: radial-gradient(circle at 30% 30%, #fff, var(--glow-strong) 35%, var(--glow) 70%, var(--aurora));
+}
+
+.chat__panel {
+  border: 1px solid rgb(111 211 255 / 0.35);
+  background: rgb(7 19 40 / 0.86);
+  backdrop-filter: blur(18px) saturate(1.3);
+  box-shadow:
+    0 0 0 1px rgb(111 211 255 / 0.15),
+    0 30px 80px rgb(0 0 0 / 0.55),
+    0 0 90px rgb(111 211 255 / 0.2);
+  transform-origin: bottom right;
+  animation: panel-in 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.chat__header {
+  background: linear-gradient(120deg, var(--yale), #0b4a8f 60%, rgb(157 140 255 / 0.6));
+  border-bottom: 1px solid rgb(111 211 255 / 0.4);
+}
+
+.chat__header p {
+  color: var(--glow-strong);
+}
+
+.chat__avatar {
+  background: radial-gradient(circle at 30% 30%, #fff, var(--glow-strong) 40%, var(--glow));
+  color: var(--night-950);
+  text-shadow: none;
+  box-shadow: 0 0 18px rgb(111 211 255 / 0.8);
+  animation: breathe 3.6s ease-in-out infinite;
+}
+
+.chat__messages,
+.chat__suggestions {
+  background: transparent;
+}
+
+.chat__message {
+  animation: message-in 0.3s ease both;
+}
+
+.chat__message--assistant {
+  border: 1px solid var(--rule);
+  background: rgb(14 35 71 / 0.85);
+  color: var(--text);
+}
+
+.chat__message--user {
+  background: linear-gradient(135deg, var(--glow), #3aa0ff);
+  color: var(--night-950);
+  box-shadow: 0 0 18px rgb(111 211 255 / 0.35);
+}
+
+.chat__message--failed {
+  border-color: rgb(255 138 138 / 0.5);
+  background: rgb(255 107 107 / 0.12);
+  color: #ffb4b4;
+}
+
+.chat__divider {
+  background: rgb(111 211 255 / 0.12);
+  color: var(--glow-strong);
+}
+
+.chat__suggestions button {
+  border-color: rgb(111 211 255 / 0.45);
+  background: rgb(111 211 255 / 0.06);
+  color: var(--glow-strong);
+}
+
+.chat__suggestions button:hover {
+  border-color: var(--glow);
+  box-shadow: 0 0 14px rgb(111 211 255 / 0.3);
+}
+
+.chat__form {
+  border-top-color: var(--rule);
+}
+
+.chat__send {
+  background: linear-gradient(135deg, var(--glow), var(--aurora));
+  color: var(--night-950);
+}
+
+.chat__send:disabled {
+  background: rgb(111 211 255 / 0.12);
+  color: #6f84a3;
+}
+
+.chat__dot {
+  background: var(--glow);
+  box-shadow: 0 0 8px var(--glow);
+}
+
+.chat-card {
+  border-color: var(--rule);
+  background: rgb(4 10 23 / 0.6);
+  color: var(--text);
+}
+
+.chat-card:hover {
+  border-color: var(--glow);
+  box-shadow: 0 0 18px rgb(111 211 255 / 0.3);
+}
+
+.chat-card img {
+  background: #fff;
+}
+
+.chat-card__name {
+  color: #fff;
+}
+
+.chat-card__meta {
+  color: var(--text-muted);
+}
+
+.chat__close {
+  color: #fff;
+}
+
+/* Sections glide in as they scroll into view (browsers that support scroll-driven animation) */
+@supports (animation-timeline: view()) {
+  .section__header,
+  .tile-grid > li,
+  .product-grid > li,
+  .value-grid > li,
+  .service-list > li,
+  .split,
+  .product-strip {
+    animation: rise-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 22%;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    box-shadow:
+      0 0 18px rgb(111 211 255 / 0.5),
+      0 0 40px rgb(157 140 255 / 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 32px rgb(111 211 255 / 0.85),
+      0 0 80px rgb(157 140 255 / 0.4);
+  }
+}
+
+@keyframes window-flicker {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+  45% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__badge::before {
+    width: min(80%, 280px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__line,
+  .hero__accent,
+  .hero__lede,
+  .hero__actions,
+  .hero__badge::before,
+  .hero__badge .seal,
+  .seal--navy,
+  .product__media img,
+  .chat__launcher,
+  .chat__avatar,
+  .chat__panel,
+  .chat__message,
+  .skyline__windows rect {
+    animation: none !important;
+  }
+
+  .product-card,
+  a.product-card:hover {
+    transform: none;
+  }
+}

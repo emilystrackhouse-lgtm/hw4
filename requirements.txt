@@ -1,0 +1,8 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+# The shop chatbot (PydanticAI with the OpenAI-compatible client, routed through Portkey).
+pydantic-ai-slim[openai]>=2.57
+# Loads settings and the AI key from .env.
+python-dotenv>=1.0
+# Only used by ../prepare_product_images.py to make white-background image copies.
+pillow>=11

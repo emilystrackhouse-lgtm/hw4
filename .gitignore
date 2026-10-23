@@ -1,0 +1,29 @@
+# Secrets: never commit the real .env (use .env.example)
+.env
+.env.*
+!.env.example
+
+# Local data pack: the database and product images stay on your machine
+data/*
+!data/README.md
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Node / Vite
+node_modules/
+dist/
+*.local
+
+# Editors and OS
+.DS_Store
+.vscode/
+.idea/
+*.swp

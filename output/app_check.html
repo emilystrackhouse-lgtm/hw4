@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Customs App Check</title>
+    <style>
+      :root {
+        --night: #040a17;
+        --panel: #0a1a36;
+        --glow: #6fd3ff;
+        --text: #e8f1ff;
+        --muted: #a9bdd8;
+        --rule: rgb(111 211 255 / 0.2);
+        --ok: #5eead4;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: radial-gradient(ellipse 90% 50% at 50% -10%, rgb(0 53 107 / 0.6), transparent 60%), var(--night);
+        color: var(--text);
+        font: 17px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 48px 16px 64px;
+      }
+
+      header p {
+        max-width: 760px;
+        color: var(--muted);
+      }
+
+      h1,
+      h2 {
+        font-family: 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        text-shadow: 0 0 30px rgb(111 211 255 / 0.4);
+      }
+
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--glow);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .meta strong {
+        color: var(--text);
+      }
+
+      section {
+        margin-top: 48px;
+        padding: 24px;
+        border: 1px solid var(--rule);
+        border-radius: 14px;
+        background: rgb(10 26 54 / 0.7);
+        box-shadow: 0 0 30px rgb(111 211 255 / 0.08);
+      }
+
+      h2 {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 12px;
+        font-size: 1.6rem;
+      }
+
+      .number {
+        display: inline-grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--glow);
+        color: var(--night);
+        font-size: 1.1rem;
+      }
+
+      .pass {
+        margin-left: auto;
+        padding: 2px 12px;
+        border: 1px solid var(--ok);
+        border-radius: 999px;
+        color: var(--ok);
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+      }
+
+      figure {
+        margin: 16px 0;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--rule);
+        border-radius: 10px;
+      }
+
+      figcaption {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .confirms {
+        margin: 0 0 16px;
+        font-size: 1.05rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+      }
+
+      th,
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--rule);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--glow);
+        font-weight: 600;
+      }
+
+      td:last-child {
+        color: var(--ok);
+        white-space: nowrap;
+      }
+
+      code {
+        padding: 1px 6px;
+        border-radius: 4px;
+        background: rgb(111 211 255 / 0.12);
+        color: #cdeeff;
+        font-size: 0.9em;
+      }
+
+      @media (max-width: 600px) {
+        section {
+          padding: 16px;
+        }
+
+        h2 {
+          flex-wrap: wrap;
+          font-size: 1.3rem;
+        }
+
+        .pass {
+          margin-left: 0;
+        }
+
+        td:last-child {
+          white-space: normal;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Homework 4 · Problem 11</p>
+        <h1>Campus Customs App Check</h1>
+        <p>
+          Three checks of the running website. Each screenshot was taken from the live app, with the React site on
+          <code>localhost:5177</code> and the FastAPI backend on <code>localhost:8000</code>. Every answer was compared
+          with a direct query of <code>data/campus_customs.db</code>.
+        </p>
+        <ul class="meta">
+          <li><strong>Date:</strong> October 23, 2026</li>
+          <li><strong>AI model:</strong> gpt-5.6-luna through Portkey</li>
+          <li><strong>Result:</strong> 3 of 3 checks passed</li>
+        </ul>
+      </header>
+
+      <section aria-labelledby="check-1">
+        <h2 id="check-1"><span class="number">1</span> Chat checks an item's inventory and price <span class="pass">PASS</span></h2>
+        <p class="confirms">
+          On the Pierson College Crewneck page, the shopper asked "How much is this crewneck, and do you have it in L or
+          S?" The assistant knew which product "this" meant, looked it up, and answered "$58. L is sold out, but S is
+          available, only 2 left." That matches the database exactly, and the size tiles on the page behind it agree.
+        </p>
+        <figure>
+          <img
+            src="app_check_images/inventory.png"
+            alt="Pierson College Crewneck product page with the chat open. The assistant replies that it is $58, L is sold out, and S has only 2 left."
+          />
+          <figcaption>The product page with the chat panel open. The reply and its product card show $58 and the sizes in stock.</figcaption>
+        </figure>
+        <table>
+          <thead>
+            <tr><th>Fact</th><th>Database (<code>catalogue</code> and <code>inventory</code>)</th><th>Assistant said</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Price</td><td>$58.00</td><td>"$58" ✓</td></tr>
+            <tr><td>Size L</td><td>0 in stock</td><td>"L is sold out" ✓</td></tr>
+            <tr><td>Size S</td><td>2 in stock</td><td>"S is available, only 2 left" ✓</td></tr>
+            <tr><td>Card sizes in stock</td><td>XS 12, S 2, M 8, XXL 2 (L and XL are 0)</td><td>"XS, S, M, XXL" ✓</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="check-2">
+        <h2 id="check-2"><span class="number">2</span> Product search cards appear after asking about hoodies <span class="pass">PASS</span></h2>
+        <p class="confirms">
+          Starting from the Home page, the shopper asked "What hoodies do you have?" The site moved to the Products page
+          on its own and showed every match as a card (photo, name, price, short description) under a "From the shop
+          assistant: Yale Hoodies · 27 styles" banner. The database has exactly 27 hoodies.
+        </p>
+        <figure>
+          <img
+            src="app_check_images/hoodie_search.png"
+            alt="Products page showing a From the shop assistant banner for Yale Hoodies, 27 styles, with hoodie product cards and the chat reply beside them."
+          />
+          <figcaption>The search results banner and hoodie cards from the chat, with the assistant's reply ("All 27 options are on the page now") on the right.</figcaption>
+        </figure>
+        <table>
+          <thead>
+            <tr><th>Fact</th><th>Database</th><th>Website showed</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Number of hoodies</td><td>27 (garment types <code>pullover hoodie</code> and <code>full-zip hoodie</code>)</td><td>"27 styles" and 27 cards ✓</td></tr>
+            <tr><td>Card contents</td><td>Image, name, price, and description from <code>catalogue</code></td><td>All four on every card ✓</td></tr>
+            <tr><td>Prices on cards</td><td>Basic Hoodie Big Yale $68, Brooks Brothers Full Zip $88, Champion Full Zip $88</td><td>$68, $88, $88 ✓</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="check-3">
+        <h2 id="check-3"><span class="number">3</span> Problem 9 improvement: the find-it-fast toolbar <span class="pass">PASS</span></h2>
+        <p class="confirms">
+          The Products page toolbar narrowed Hoodies to only styles with <strong>XS in stock</strong>, then sorted them
+          <strong>price low to high</strong>. It shows "21 styles in Hoodies with XS in stock," starting with the $45 UA
+          Gameday Double Knit Hood. The database also has 21 hoodies with XS in stock, and $45 is the lowest hoodie price.
+        </p>
+        <figure>
+          <img
+            src="app_check_images/usability_toolbar.png"
+            alt="Products page with Hoodies selected, the In my size filter set to XS in stock, and Sort by set to Price low to high, showing 21 styles starting at $45."
+          />
+          <figcaption>The toolbar with "XS in stock" and "Price: low to high" applied. The settings are also kept in the address: <code>/products?style=hoodies&amp;size=XS&amp;sort=price-asc</code>.</figcaption>
+        </figure>
+        <table>
+          <thead>
+            <tr><th>Fact</th><th>Database</th><th>Website showed</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Hoodies with XS in stock</td><td>21</td><td>"Showing 21 styles" ✓</td></tr>
+            <tr><td>Cheapest of those</td><td>UA Gameday Double Knit Hood, $45</td><td>First card, $45 ✓</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>
